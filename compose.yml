@@ -1,16 +1,5 @@
-name: homelab
+services:
 
-include:
-  - docker/uptime-kuma/compose.yml
-  - docker/vaultwarden/compose.yml
-  - docker/icloud-photo/compose.yml
-  - docker/restic/compose.yml
-  - docker/netdata/compose.yml
-  - docker/komodo/compose.yml
-  - docker/jenkins/compose.yml
-  - docker/it-tools/compose.yml
-  - docker/makemkv/compose.yml
-  - docker/mkvtoolnix/compose.yml
-  - docker/scrutiny/compose.yml
-  - docker/traefik/compose.yml
-  - docker/pihole/compose.yml
+  traefik:
+    image: traefik:v3.4.4
+    restart: unless-stopped
