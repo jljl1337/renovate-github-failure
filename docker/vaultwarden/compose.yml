@@ -1,0 +1,15 @@
+services:
+
+  vaultwarden:
+    image: vaultwarden/server:1.34.1
+    container_name: homelab-vaultwarden
+    restart: unless-stopped
+    volumes:
+      - ${VAULTWARDEN_DATA}:/data
+    environment:
+      - SIGNUPS_ALLOWED=false # Comment this line to allow signups
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vaultwarden.rule=Host(`vaultwarden.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.vaultwarden.entrypoints=websecure"
+      - "traefik.http.services.vaultwarden.loadbalancer.server.port=80"
