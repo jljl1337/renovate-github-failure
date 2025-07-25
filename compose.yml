@@ -1,0 +1,4 @@
+name: homelab
+
+include:
+  - docker/icloud-photo/compose.yml
